@@ -1,0 +1,186 @@
+<body>
+    <h1>Eaglecraft Keystrokes Addon</h1>
+
+    <div class="keystrokes">
+        <div class="key" id="keyW">W</div>
+        <div class="key-row">
+            <div class="key" id="keyA">A</div>
+            <div class="key" id="keyS">S</div>
+            <div class="key" id="keyD">D</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+document.addEventListener('keydown', function(event) {
+    const key = document.getElementById('key' + event.key.toUpperCase());
+    if (key) {
+        key.classList.add('active');
+    }
+});
+
+document.addEventListener('keyup', function(event) {
+    const key = document.getElementById('key' + event.key.toUpperCase());
+    if (key) {
+        key.classList.remove('active');
+    }
+});
+const keys = {
+    "KeyW": document.getElementById("keyW"),
+    "KeyA": document.getElementById("keyA"),
+    "KeyS": document.getElementById("keyS"),
+    "KeyD": document.getElementById("keyD")
+};
+
+// キーを押したら光る！
+document.addEventListener("keydown", (event) => {
+    if (keys[event.code]) {
+        keys[event.code].classList.add("active");
+    }
+});
+
+// キーを離したら元に戻る！
+document.addEventListener("keyup", (event) => {
+    if (keys[event.code]) {
+        keys[event.code].classList.remove("active");
+    }
+});
+
+// CPS（クリック毎秒）カウント
+let clicks = 0;
+let cps = 0;
+
+// CPS表示用のdivを作る
+const cpsCounter = document.createElement("div");
+cpsCounter.id = "cpsCounter";
+cpsCounter.innerText = "CPS: 0";
+document.body.appendChild(cpsCounter);
+
+// 毎秒CPSを更新
+setInterval(() => {
+    cps = clicks;
+    clicks = 0;
+    cpsCounter.innerText = `CPS: ${cps}`;
+}, 1000);
+
+// クリックを数える
+document.addEventListener("mousedown", () => {
+    clicks++;
+});
+const keys = {
+    "KeyW": document.getElementById("keyW"),
+    "KeyA": document.getElementById("keyA"),
+    "KeyS": document.getElementById("keyS"),
+    "KeyD": document.getElementById("keyD")
+};
+
+// キーを押したら光る！
+document.addEventListener("keydown", (event) => {
+    if (keys[event.code]) {
+        keys[event.code].classList.add("active");
+    }
+});
+
+// キーを離したら元に戻る！
+document.addEventListener("keyup", (event) => {
+    if (keys[event.code]) {
+        keys[event.code].classList.remove("active");
+    }
+});
+
+// CPS（クリック毎秒）カウント
+let clicks = 0;
+let cps = 0;
+
+// CPS表示用のdivを作る
+const cpsCounter = document.createElement("div");
+cpsCounter.id = "cpsCounter";
+cpsCounter.innerText = "CPS: 0";
+document.body.appendChild(cpsCounter);
+
+// 毎秒CPSを更新
+setInterval(() => {
+    cps = clicks;
+    clicks = 0;
+    cpsCounter.innerText = `CPS: ${cps}`;
+}, 1000);
+
+// クリックを数える
+document.addEventListener("mousedown", () => {
+    clicks++;
+});
+body {
+    background-color: #111;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.keystrokes {
+    display: inline-block;
+}
+
+.key {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    line-height: 60px;
+    background-color: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    font-size: 24px;
+    transition: 0.2s;
+}
+
+.key.active {
+    background-color: #0f0;
+    border-color: #0f0;
+}
+
+.key-row {
+    margin-top: 10px;
+}
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.keystrokes {
+    display: inline-block;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00f0ff;
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.key {
+    background: #333;
+    border: 2px solid #00f0ff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    margin: 5px;
+    font-size: 24px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.key.active {
+    background: #00f0ff;
+    color: black;
+    transform: scale(1.1);
+}
+
+#cpsCounter {
+    margin-top: 20px;
+    font-size: 20px;
+}
